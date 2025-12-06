@@ -24,7 +24,7 @@ class State:
     words_found: list[str]
 
 words = ['cool','pets','mill','arts','bell']
-letters = 'petsalmeutocpmillbscoolrirageoltemprulacopetsllameoipmartsebo'
+letters = 'petsmalmeutocpibcoolsrialgeoltemprluacopeasllameoipmartsebo'
 
 def letters_adjacent(positions: list[int]) -> bool:
     if int(positions[0]) == int(positions[1])-1 == int(positions[2])-2 == int(positions[3])-3:
@@ -163,6 +163,7 @@ def create_wordsearch(state: State, user_number: int) -> Page:
         Row(button70,button71,button72,button73,button74,button75,button76,button77,button78,button79),
         Row(button80,button81,button82,button83,button84,button85,button86,button87,button88,button89),
         Row(button90,button91,button92,button93,button94,button95,button96,button97,button98,button99),
+        Button('Back', 'index')
     ])
 
 @route
@@ -170,7 +171,6 @@ def clicked_button(state: State, letter: str) -> Page:
     state.wordsearch_words = words
     state.user_guess += letter[0]
     state.positions.append(letter[1:])
-    print(state.positions)
     if len(state.user_guess) == 5:
         if state.user_guess in state.words_found:
             state.user_guess = 'You already found this word!'
